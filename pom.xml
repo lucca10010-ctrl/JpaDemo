@@ -18,13 +18,26 @@
         <license/>
     </licenses>
     <developers>
-        <developer/>
+        <developer>
+            <id>lucca10010-ctrl</id>
+            <name>Lucca</name>
+            <email>lucca@example.com</email>
+            <organization>Example Corp</organization>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
     </developers>
     <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
+        <!--        ssh:  git@github.com:lucca10010-ctrl/JpaDemo.git-->
+        <!--        只读的 SCM 连接 URL-->
+        <connection>scm:git:git://github.com/lucca10010-ctrl/JpaDemo.git</connection>
+        <!--        开发者的 SCM 连接 URL-->
+        <developerConnection>scm:git:ssh://git@github.com:lucca10010-ctrl/JpaDemo.git</developerConnection>
+        <!--        当前代码的版本标签-->
+        <tag>HEAD</tag>
+        <!--        SCM 浏览器的 URL-->
+        <url>https://github.com/lucca10010-ctrl/JpaDemo</url>
     </scm>
     <properties>
         <java.version>17</java.version>
