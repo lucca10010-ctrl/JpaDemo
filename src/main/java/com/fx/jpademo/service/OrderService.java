@@ -39,11 +39,6 @@ public class OrderService {
      * @return
      */
     public List<OrderDto> findOrderDtoByUserId(Integer userId) throws JsonProcessingException {
-        PagedModel<OrderDtoProjection> orderDtoByUserIdProjection = findOrderDtoByUserIdProjection(userId);
-        PagedModel<OrderDto> orderDtoByUserIdCommon = findOrderDtoByUserIdCommon(userId);
-        PagedModel<Order> query = dynamicQueryOneTable("12", "北京市");
-        PagedModel<OrderDto> queryMultiTable = dynamicQueryMultiTable("tom1", "12", "北京市");
-        PagedModel<OrderDto> queryMultiTable2 = dynamicQueryMultiTable2("tom", "12", "北京市");
         return orderRepository.findOrderDtoByUserId(userId);
     }
 
@@ -143,7 +138,8 @@ public class OrderService {
             if (StringUtils.hasText(username)) {
                 list.add(builder.equal(userJoin.get("username"), username));
             }
-            return query.where(list.toArray(new Predicate[0])).getRestriction();
+            return builder.and(list.toArray(new Predicate[0]));
+//            return query.where(list.toArray(new Predicate[0])).getRestriction(); // 会直接将条件应用到查询对象上
         };
         Page<Order> orders = orderRepository.findAll(specOrder, page);
         List<OrderDto> list = orders.getContent().stream().map(e -> new OrderDto(e.getId(), e.getOrderNo(),

@@ -20,12 +20,10 @@ public interface OrderRepository extends JpaRepository<Order, Integer>, JpaSpeci
 
 
     // 方法2：查询用户的所有订单（关联查询）
-    // todo 会查出所有订单信息吗？
     @Query("SELECT o FROM Order o JOIN FETCH o.user WHERE o.user.id = :userId")
-    List<Order> findOrdersByUserIdWithUser(@Param("userId") Integer userId);
+    Page<Order> findOrdersByUserIdWithUser(@Param("userId") Integer userId, Pageable page);
 
     // 方法3：查询订单详情（包含用户信息）
-    // todo 会查出所有订单信息吗？
     @Query("SELECT o FROM Order o JOIN FETCH o.user WHERE o.id = :orderId")
     Optional<Order> findOrderWithUser(@Param("orderId") Long orderId);
 
