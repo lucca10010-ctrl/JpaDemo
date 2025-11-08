@@ -17,7 +17,7 @@ public class Order {
 //    private Integer userId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-//    @JsonIgnore
+//    @JsonIgnore // 去掉循环引用，避免栈溢出
     private User user;
     private BigDecimal totalAmount;
     /**
@@ -42,4 +42,24 @@ public class Order {
     private String remark;
     private ZonedDateTime createdAt;
     private ZonedDateTime updatedAt;
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", orderNo='" + orderNo + '\'' +
+                ", user=" + user +
+                ", totalAmount=" + totalAmount +
+                ", orderStatus=" + orderStatus +
+                ", payStatus=" + payStatus +
+                ", payMethod=" + payMethod +
+                ", payTime=" + payTime +
+                ", deliveryStatus=" + deliveryStatus +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", remark='" + remark + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
+    }
 }

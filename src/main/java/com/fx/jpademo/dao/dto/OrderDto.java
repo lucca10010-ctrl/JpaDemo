@@ -5,6 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import java.util.Map;
 
 @Data
 public class OrderDto implements Serializable {
@@ -25,6 +26,11 @@ public class OrderDto implements Serializable {
         this.totalAmount = totalAmount;
         this.orderStatus = orderStatus;
         this.username = username;
+    }
+
+    public static OrderDto toOrderDto4Jpa(Map<String, Object> e) {
+        return new OrderDto((Long) e.get("id"), (String) e.get("order_no"),
+                (BigDecimal) e.get("total_amount"), (Short) e.get("order_status"), (String) e.get("username"));
     }
 
     @Override

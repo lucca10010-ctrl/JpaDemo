@@ -53,8 +53,8 @@ INSERT INTO demo.t_order (order_no,user_id,total_amount,order_status,pay_status,
 INSERT INTO demo.t_order (order_no,user_id,total_amount,order_status,pay_status,pay_method,pay_time,delivery_status,phone,address,remark,created_at,updated_at) VALUES
     ('123457',1,12.36,1,1,1,NULL,1,'3587548741','北京市',NULL,NULL,NULL);
 
-INSERT INTO demo.t_order (order_no,user_id,total_amount,order_status,pay_status,pay_method,pay_time,delivery_status,phone,address,remark,created_at,updated_at) VALUES
-    ('123458',1,1582.36,1,1,1,NULL,1,'3587548742','上海市',NULL,NULL,NULL);
+INSERT INTO demo.t_order (order_no,user_id,total_amount,order_status,pay_status,pay_method,pay_time,delivery_status,phone,address,remark) VALUES
+    ('123458',1,1582.36,1,1,1,NULL,1,'3587548742','上海市',NULL);
 
 
 

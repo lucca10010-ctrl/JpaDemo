@@ -1,5 +1,6 @@
 package com.fx.jpademo.dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -25,5 +26,20 @@ public class User {
 
     // 一对多关系：一个用户有多个订单
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Order> orders;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", age=" + age +
+                ", sex=" + sex +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+//                ", orders=" + orders +                   // 去掉循环打印，避免栈溢出
+                '}';
+    }
 }

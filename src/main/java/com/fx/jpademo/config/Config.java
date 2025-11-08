@@ -1,5 +1,6 @@
 package com.fx.jpademo.config;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -27,6 +28,7 @@ public class Config {
     public Jackson2ObjectMapperBuilderCustomizer customizer() {
         return builder -> {
             builder.featuresToDisable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+            builder.serializationInclusion(JsonInclude.Include.NON_NULL);
             // 反序列化配置
             builder.featuresToDisable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         };
